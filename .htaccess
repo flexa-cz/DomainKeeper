@@ -1,0 +1,8 @@
+RewriteEngine on
+
+#RewriteCond %{HTTP_HOST} ^www\.domain-keeper\.lh
+#RewriteRule (.*) http://domain-keeper.lh/$1 [R=301,L]
+
+RewriteCond $1 !^(index\.php|www|robots\.txt|sitemap\.xml)
+RewriteRule ^(.*)$ index.php/$1
+

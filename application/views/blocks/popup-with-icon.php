@@ -1,0 +1,1 @@
+<span class="PopupWithIcon">{icon}<span class="Corner10"> {text}</span></span>

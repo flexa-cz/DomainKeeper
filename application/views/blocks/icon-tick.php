@@ -1,0 +1,1 @@
+<img src="/www/icons/tick.png" width="16" height="16" class="Ico">

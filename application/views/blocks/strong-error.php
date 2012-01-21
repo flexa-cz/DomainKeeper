@@ -1,0 +1,1 @@
+<strong class="Error"><?=$text?></strong>

@@ -14,7 +14,11 @@
 |
 */
 
+// absolute path to project root
 define('_ROOT', str_replace(array('\\','application/config/constants.php'),array('/',false),__FILE__));
+
+// check if running on localhost
+define('_LOCALHOST', (getenv('little_finger_localhost') ? true : false));
 
 define('FILE_READ_MODE', 0644);
 define('FILE_WRITE_MODE', 0666);

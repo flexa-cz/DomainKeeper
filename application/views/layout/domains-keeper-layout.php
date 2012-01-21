@@ -16,6 +16,7 @@
 	<script type="text/javascript" src="/www/js/jquery/js/jquery-ui-1.8.16.custom.min.js"></script>
 	<script type="text/javascript">var site_identificator='{site_identificator}';</script>
 	<script type="text/javascript" src="/www/js/domain-keeper.js"></script>
+	<style type="text/css"><?=debuger::get_css()?></style>
 </head>
 <body>
 {table}
@@ -46,5 +47,6 @@
 		nastaveni uctu, vcetne prihlaseni, nebo vytvoreni noveho uctu
 	</div>
 </div>
+<?=debuger::get_panel()?>
 </body>
 </html>

@@ -1,0 +1,20 @@
+author: Milan Vlahovic
+email: flexa@flexa.cz
+
+* PHP, MySQL project
+* helps to keep info about my domains
+* list of domains is in db
+* program check
+	- if domain is in order
+	- ip of domain ad compare it with list of my ip in db
+* keep info about domain blackout
+
+todo:
+* check seo
+* check links
+* run tests
+* run server actions like import data (like cron)
+* user accounts
+
+
+

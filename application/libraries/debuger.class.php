@@ -83,6 +83,7 @@ class debuger{
 		if(self::$localhost){
 			$tables="
 	/* samotne tabulky s debug vypisem */
+	body{margin-bottom: 70px !important;}
 	div.debuger-report{width:100% !important;overflow: auto !important; background-color: white !important; text-align: left !important; padding: 5px  !important; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif !important; font-size: 18px;".(self::$ui=='popup' ? 'display: none;' : false)."}
 	div.debuger-report h1{color:black;margin: 0 0 1em 0 !important; padding: 0 !important; font-size:100% !important;}
 	div.debuger-report table{border-collapse: collapse !important;background-color: white !important;border: 1px solid black !important;z-index: 1000000000 !important;}
@@ -101,7 +102,7 @@ class debuger{
 	div.debuger-report table tr td.backtrace,div.debuger-report table tr:nth-child(even) td.backtrace{background-color: yellow !important;}";
 			$panel="
 	/* pokud se ma vykreslovat jako popup */
-	div#debuger-panel{position: fixed !important; bottom: 0px !important; left: 0px !important; width: 100% !important; height: 50px !important; z-index:2000000000 !important;text-align:left !important;line-height: 50px !important; padding: 0 20px;color: white !important; font-size: 16px !important;
+	div#debuger-panel{position: fixed !important; bottom: 0px !important; left: 0px !important; width: 100% !important; height: 50px !important; z-index:2000000000 !important;text-align:left !important;line-height: 50px !important; padding: 0 20px;color: white !important; font-size: 16px !important; border-top: 1px solid white !important;
 	/* gradient */
 	background: #aebcbf; /* Old browsers */
 	background: -moz-linear-gradient(top,  #aebcbf 0%, #6e7774 50%, #0a0e0a 51%, #0a0809 100%); /* FF3.6+ */

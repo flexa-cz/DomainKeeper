@@ -35,4 +35,5 @@ Thumbs.db
 
 # ignore specialy in project #
 ##############################
+application/config/constants.php
 application/config/database.php

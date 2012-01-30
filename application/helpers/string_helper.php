@@ -31,6 +31,11 @@ function log_progress($identificator,$text,$count_all,$count_this){
 }
 
 
+/**
+ *
+ * @return type
+ * @todo Vlahovic, 27.1.12 21:46: dat jako atribut hlavniho objektu - urcite se bude hodit i v php, js, ...
+ */
 function site_identificator(){
 	return md5(mt_rand(0, 1000000000));
 }

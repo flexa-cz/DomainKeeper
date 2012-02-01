@@ -87,9 +87,9 @@ class debuger{
 	div.debuger-report{width:100% !important;overflow: auto !important; background-color: white !important; text-align: left !important; padding: 5px  !important; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif !important; font-size: 18px;".(self::$ui=='popup' ? 'display: none;' : false)."}
 	div.debuger-report h1{color:black;margin: 0 0 1em 0 !important; padding: 0 !important; font-size:100% !important;}
 	div.debuger-report table{border-collapse: collapse !important;background-color: white !important;border: 1px solid black !important;z-index: 1000000000 !important;}
-	div.debuger-report table th{background-color: black !important;color: white !important;}
 	div.debuger-report table tr{border:1px solid black  !important;}
-	div.debuger-report table td,div.debuger-report table th{border:1px solid black  !important;padding: 3px 5px 3px 5px !important;font-size:80% !important;}
+	div.debuger-report table td,div.debuger-report table th{border:1px solid black  !important;padding: 3px 5px 3px 5px !important;font-size:80% !important;color:black !important;}
+	div.debuger-report table th{background-color: black !important;color: white !important;}
 	div.debuger-report table td div.value{max-height: 500px !important;overflow: auto !important;}
 	div.debuger-report table td div.value pre{margin:0 !important;}
 	div.debuger-report table tr:nth-child(even) td{background-color: #eee !important;}";

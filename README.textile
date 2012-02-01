@@ -21,6 +21,7 @@ h2. About
 * keep info about domain blackout
 
 h2. Todo
+
 * check seo
 * check links
 * run tests
@@ -29,3 +30,7 @@ h2. Todo
 * automatic check domain with and without "www"
 * history
 * multilanguage
+* administration
+	- my ip
+	- my domains
+	- test

@@ -27,3 +27,4 @@ h2. Author
 
 *name:* Milan Vlahovič
 *email:* flexa@flexa.cz
+*web:* "http://flexa.cz":flexa.cz

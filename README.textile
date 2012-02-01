@@ -4,9 +4,7 @@ Helps to keep info about your domains...
 
 h2. About
 
-*author:* Milan Vlahovic
-*email:* flexa@flexa.cz
-*edited:* 21.1.12 22:06
+*edited:* 1.2.12 9:16
 *version:* 1.0
 
 * PHP, MySQL project
@@ -24,3 +22,8 @@ h2. Todo
 * run tests
 * run server actions like import data (like cron)
 * user accounts
+
+h2. Author
+
+*name:* Milan Vlahovič
+*email:* flexa@flexa.cz

@@ -2,11 +2,14 @@ h1. DomainKeeper
 
 Helps to keep info about your domains...
 
-h2. About
-
+|*author*|Milan Vlahovič|
+|*email*|flexa@flexa.cz|
+|*web*|"flexa.cz":http://flexa.cz|
+|*language:*|czech|
 |*edited:*|1.2.12 9:16|
 |*version:*|1.0|
-|*language:*|czech|
+
+h2. About
 
 * PHP, MySQL project
 * PHP framework: codeigniter
@@ -26,9 +29,3 @@ h2. Todo
 * automatic check domain with and without "www"
 * history
 * multilanguage
-
-h2. Author
-
-*name:* Milan Vlahovič
-*email:* flexa@flexa.cz
-*web:* "flexa.cz":http://flexa.cz

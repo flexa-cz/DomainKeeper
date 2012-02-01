@@ -4,9 +4,9 @@ Helps to keep info about your domains...
 
 h2. About
 
-*edited:* 1.2.12 9:16
-*version:* 1.0
-*language:* czech
+|*edited:*|1.2.12 9:16|
+|*version:*|1.0|
+|*language:*|czech|
 
 * PHP, MySQL project
 * PHP framework: codeigniter

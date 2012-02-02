@@ -68,7 +68,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ececec', end
 }
 
 /* tabulky */
-table{border-collapse: collapse;border: 2px solid #aaa;}
+table{border-collapse: collapse;border: 2px solid #aaa;width: 100%;}
 td,th{border: 1px solid #aaa;padding: 2px 5px 2px 5px;background-color: white;text-align: left;}
 th.LineNum{background-color: #8DC40D;}
 td.LineNum{background-color: #E8E8E8;}

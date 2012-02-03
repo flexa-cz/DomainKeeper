@@ -34,3 +34,7 @@ h2. Todo
 	- my ip
 	- my domains
 	- test
+
+h2. Debugger
+
+* "debugger settings":http://phpfashion.com/jak-vypsat-funkci-argumenty-promenne

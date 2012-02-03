@@ -41,13 +41,15 @@ class Temporary_file{
 	}
 
 	private function setFile(){
-		if($this->control){
-			$file=fopen($this->file_address, 'w+');
-			if($file){
-				$this->file=$file;
-			}
-			else{
-				$this->control=false;
+		if(!$this->file){
+			if($this->control){
+				$file=fopen($this->file_address, 'w+');
+				if($file){
+					$this->file=$file;
+				}
+				else{
+					$this->control=false;
+				}
 			}
 		}
 	}
@@ -56,12 +58,15 @@ class Temporary_file{
 	/* public methods																														*/
 	/* ************************************************************************ */
 	public function write($string){
-		if(!$this->file){
-			$this->setFile();
-		}
-		if($this->control){
-			fwrite($this->file, $string);
-		}
+		$this->setFile();
+		fwrite($this->file, $string);
+	}
+
+	/**
+	 * vraci posledni radek nastaveneho souboru
+	 */
+	public final function getLastRow(){
+		return array_pop(file($this->file_address));
 	}
 }
 ?>

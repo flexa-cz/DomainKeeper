@@ -81,8 +81,8 @@ tr.Inactive td.LineNum{background-color: #ddd;}
 tr.Inactive:nth-child(even) td{background-color: #ddd;}
 tr.Inactive:nth-child(even) td.LineNum{background-color:#ccc;}
 
-tr:hover td{background-color: #F26D93;}
-tr:hover td.LineNum{background-color: #AC2B50;}
+tr:hover td,tr.Inactive:hover td{background-color: #F26D93;}
+tr:hover td.LineNum,tr.Inactive:hover td.LineNum{background-color: #AC2B50;}
 
 /* obrazky */
 .Ico{border: none;outline: none;padding: 0;margin: 0;}

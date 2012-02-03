@@ -23,8 +23,13 @@ function log_progress($identificator,$text,$count_all,$count_this){
 	// chci jen neprazdne vystupy
 	if($text && $count_all && $count_this){
 		static $count=array();
+		$json=array(
+				'text'=>$text,
+				'count_this'=>$count_this,
+				'count_all'=>$count_all,
+		);
 		// pred kazdy, krom prvniho da odradkovani
-		$return=(isset($count[$identificator]) ? "\r\n" : false).$text.':'.$count_this.'/'.$count_all;
+		$return=(isset($count[$identificator]) ? "\r\n" : false).json_encode($json);
 		$count[$identificator]=(isset($count[$identificator]) ? $count[$identificator]+1 : 1);
 	}
 	return $return;

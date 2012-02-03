@@ -120,7 +120,8 @@ class Domain_keeper extends MY_Controller {
 		}
 		// informace o prubehu
 		elseif(!empty($_POST['temporary_file_name']) && !empty($_POST['action']) && $_POST['action']=='info'){
-			echo 'info...';
+			$this->parent->load->library('temporary_file',array('file_name'=>$this->temporary_file_name));
+			echo $this->parent->temporary_file->getLastRow();
 		}
 		else{
 			print_r($_POST);

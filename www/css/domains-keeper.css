@@ -25,9 +25,9 @@ body{background-color: #eee;font-family: Verdana, Geneva, Arial, Helvetica, sans
 #GenNav ul li{display:block;float:left;height: 30px;margin:0 0 0 10px;border:1px solid black;}
 #GenNav ul li a{display:block;height: 30px;line-height: 30px;padding:0 10px 0 36px;text-decoration: none;color:white;background-repeat: no-repeat;background-position: 10px 7px;outline: none;}
 #GenNav ul li a:hover,#GenNav ul li a.Active{color: black;}
-#GenNav ul li a.Account{background-image: url('../icons/user.png');}
-#GenNav ul li a.Navigation{background-image: url('../icons/arrow-270.png');}
-#GenNav ul li a.Refresh{background-image: url('../icons/arrow-circle-135.png');}
+#GenNav ul li a.Account{background-image: url('../icons/user_green.png');}
+#GenNav ul li a.Navigation{background-image: url('../icons/arrow_down.png');}
+#GenNav ul li a.Refresh{background-image: url('../icons/arrow_refresh.png');}
 #GenNav ul li:hover,#GenNav ul li.Active:hover{
 	background: #ecf9ac; /* Old browsers */
 	background: -moz-linear-gradient(top,  #ecf9ac 0%, #e1fa71 50%, #c9f600 51%, #caf700 100%); /* FF3.6+ */

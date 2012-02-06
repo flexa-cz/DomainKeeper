@@ -158,7 +158,7 @@ function progressbar(title,site_identificator,hide_close_tick,data){
 	});
 
 	// spusti jeho update
-	setTimeout(update_progress, 1000);
+	setTimeout(update_progress(site_identificator), 1000);
 
 	// po vterine updatuje hodnoty teplomeru
 	setTimeout(
@@ -176,11 +176,25 @@ function hide_progressbar(){
 /**
  * zjistuje aktualni hodnotu progressbaru a nastavuje ji
  */
-function update_progress() {
+function update_progress(file_name) {
   var progress;
   progress = $("div#ProgressBar div.Bar")
     .progressbar("option","value");
   if (progress < 100) {
+
+      // zpracuje formular
+      $.post(
+        '/check',
+        '?temporary_file_name=' + file_name + '&action=info',
+        function(data) {
+          if (data.errors == null) {
+          }
+          else{
+          }
+        }
+        , "json"
+      );
+
       $("div#ProgressBar div.Bar")
         .progressbar("option", "value", progress + 1);
       setTimeout(update_progress, 1000);

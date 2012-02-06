@@ -121,11 +121,14 @@ class Domain_keeper extends MY_Controller {
 		// informace o prubehu
 		elseif(!empty($_POST['temporary_file_name']) && !empty($_POST['action']) && $_POST['action']=='info'){
 			$this->parent->load->library('temporary_file',array('file_name'=>$this->temporary_file_name));
+			echo 'ok';
 			echo $this->parent->temporary_file->getLastRow();
 		}
-		else{
+		elseif(!empty($_POST)){
 			print_r($_POST);
-//			echo 0;
+		}
+		else{
+			echo 0;
 		}
 		// test nastavenych akci
 		// spusteni cron souboru

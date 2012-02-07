@@ -4,6 +4,7 @@
  * nastroj pro debugovani...
  * cim driv se nacte do programu tim driv se bude merit microtime
  * aby fungovalo je potreba zavolat set_localhost a na localhostu nastavit true
+ * a musi existovat konstanta _ROOT s absolutni cestou do rootu projektu
  *
  * @since 12.1.12 13:04
  * @author Vlahovic

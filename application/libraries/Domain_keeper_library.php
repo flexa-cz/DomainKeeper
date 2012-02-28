@@ -48,6 +48,7 @@ class Domain_keeper_library{
 				$ret = curl_exec($ch);
 
 				if (empty($ret)) {
+						$this->domains_info[$index]['redirect']='';
 						$this->domains_info[$index]['host']='';
 						$this->domains_info[$index]['real_url']='';
 						$this->domains_info[$index]['ip']='';
@@ -59,6 +60,7 @@ class Domain_keeper_library{
 						$real_url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
 						$host = parse_url($real_url, PHP_URL_HOST);
 						$ip = @gethostbyname($host);
+						$this->domains_info[$index]['redirect']=$info['redirect_url'];
 						$this->domains_info[$index]['host']=$host;
 						$this->domains_info[$index]['real_url']=$real_url;
 						$this->domains_info[$index]['ip']=$ip;

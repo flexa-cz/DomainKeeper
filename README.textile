@@ -34,6 +34,10 @@ h2. Todo
 	- my ip
 	- my domains
 	- test
+* notes for ever domain
+	- datetime
+	- user
+	- text
 
 h2. Debugger
 

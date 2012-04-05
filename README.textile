@@ -38,6 +38,7 @@ h2. Todo
 	- datetime
 	- user
 	- text
+* page rank of all sites (from sitemap)
 
 h2. Debugger
 

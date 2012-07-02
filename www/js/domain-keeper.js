@@ -238,3 +238,91 @@ function info_dialog(title,content,timer,hide_close_tick){
 //		$( "#InfoDialog" ).delay(800).dialog('close');
 	}
 }
+
+/**
+ * objekt progressbaru
+ *
+ * @param site_identificator jednoznacne oznaceni strany
+ *
+ * @author Vlahovic
+ * @since 2.7.12 16:38
+ */
+var ProgressBar = function(site_identificator){
+	this.site_identificator = site_identificator;
+
+	/**
+	* zobrazuje dialogove okno progressbaru
+	*
+	* @param title nazev okna
+	* @param site_identificator jednoznacne oznaceni strany
+	* @param hide_close_tick [optional] zda se ma skryt krizek pro zavreni; 1=hide
+	* @param data [optional] debugovaci data
+	*
+	* @since 2.1.12 16:47
+	* @author Vlahovic
+	*/
+	var show = function (title,site_identificator,hide_close_tick,data){
+		// k telu pripoji div pro zobrazeni progressbaru
+		$('body').append('<div id="ProgressBar"></div>');
+		// vyprazdni ho a vlozi do nej obsah
+		$('div#ProgressBar').empty().append(arr2str(data,true) + '<div class="Bar"></div>');
+		// zobrazi jako modalni dialog jquery
+		$( "#ProgressBar" ).dialog({
+			title: title,
+			modal: true,
+			resizable: false,
+			draggable: false,
+			dialogClass: 'ProgressBar',
+			closeOnEscape: false,
+			width: 500
+		});
+		// skryje zaviraci krizek
+		if(hide_close_tick){
+			$( "#ProgressBar" ).dialog( "option", "dialogClass", 'HideCloseTick' );
+		}
+
+		// zobrazi teplomer
+		$( "div#ProgressBar div.Bar" ).progressbar({
+			value: 0
+		});
+
+		// spusti jeho update
+		setTimeout(update_progress(), 1000);
+
+		// po vterine updatuje hodnoty teplomeru
+		setTimeout(
+			function(){
+
+			},
+			1000
+		);
+	}
+
+	/**
+	* zjistuje aktualni hodnotu progressbaru a nastavuje ji
+	*/
+	var update = function () {
+		var progress;
+		progress = $("div#ProgressBar div.Bar")
+			.progressbar("option","value");
+		if (progress < 100) {
+
+				// zpracuje formular
+				$.post(
+					'/check',
+					'?temporary_file_name=' + this.site_identificator + '&action=info',
+					function(data) {
+						if (data.errors == null) {
+						}
+						else{
+						}
+					}
+					, "json"
+				);
+
+				$("div#ProgressBar div.Bar")
+					.progressbar("option", "value", progress + 1);
+				setTimeout(this.update, 1000);
+		}
+	}
+}

@@ -1,18 +1,7 @@
 
 $(document).ready(function() {
 	// odkazy hlavni navigace
-	$('#GenNav a').click(
-	function(ev){
-		// stopne akci odkazu
-		ev.preventDefault();
-		var el_class=$(this).attr('class');
-		var d=$('#Subnavigation div#' + el_class).css('display');
-		hide_subnavigation();
-		if(d!='block'){
-			show_subnavigation(el_class);
-		}
-
-	});
+	new Navigation().Init();
 
 	// formular pro obnoveni dat - chyceni odeslani, spusteni ajaxem, zobrazeni popupu s progressbarem
 	$('#Refresh form input[type=submit]').click(
@@ -23,7 +12,7 @@ $(document).ready(function() {
 			// stopne akci tlacitka
 			ev.preventDefault();
 			// skryje formular
-			hide_subnavigation();
+			new Navigation().Hide();
 			// posklada data pro post
 			post_data['domains']=($('#Refresh form input#domains').is(':checked') ? 1 : 0);
 			post_data['tests']=($('#Refresh form input#tests').is(':checked') ? 1 : 0);
@@ -34,7 +23,8 @@ $(document).ready(function() {
 			// zobrazuje progress bar
 			if(post_data['domains'] || post_data['tests'] || post_data['cron']){
 				// samotny progressbar uz se v pravidelnych intervalech pta jak probiha obnoveni na zakladi site_identificator...
-				progressbar('obnovení dat',si,0,post_data);
+//				progressbar('obnovenĂ­ dat',si,0,post_data);
+				new ProgressBar(si).Show('obnovení dat').HideCloseTick();
 
 				// data pro post
 				var data='action=check&temporary_file_name=' + si;
@@ -45,8 +35,6 @@ $(document).ready(function() {
 					url: '/check',
 					data: data,
 					success: function(succ){
-						hide_progressbar()
-						alert(succ);
 					}
 				});
 			}
@@ -61,31 +49,6 @@ $(document).ready(function() {
 	);
 
 });
-
-/**
- * zobrazi podnavigaci prislusejici menu buttonu, na ktery bylo kliknuto
- *
- * @param el_class trida buttonu na ktery bylo kliknuto
- *
- * @since 3.1.12 8:18
- * @author Vlahovic
- */
-function show_subnavigation(el_class){
-	var el='#Subnavigation div#' + el_class;
-	$('#GenNav a.' + el_class).addClass('Active').parent('li').addClass('Active');
-	$(el).show('slow');
-}
-
-/**
- * skryje vsechny zobrazena okna podnavigace
- *
- * @since 3.1.12 8:17
- * @author Vlahovic
- */
-function hide_subnavigation(){
-	$('#GenNav a.Active, #GenNav li.Active').removeClass('Active');
-	$('#Subnavigation div').hide('slow');
-}
 
 /**
  * pole vyhodi jako retezec v alert okne
@@ -119,86 +82,6 @@ function arr2str(arr,html){
 	}
 	a=a + '}';
 	return a;
-}
-
-/**
- * zobrazuje dialogove okno progressbaru
- *
- * @param title nazev okna
- * @param site_identificator jednoznacne oznaceni strany
- * @param hide_close_tick [optional] zda se ma skryt krizek pro zavreni; 1=hide
- * @param data [optional] debugovaci data
- *
- * @since 2.1.12 16:47
- * @author Vlahovic
- */
-function progressbar(title,site_identificator,hide_close_tick,data){
-	// k telu pripoji div pro zobrazeni progressbaru
-	$('body').append('<div id="ProgressBar"></div>');
-	// vyprazdni ho a vlozi do nej obsah
-	$('div#ProgressBar').empty().append(arr2str(data,true) + '<div class="Bar"></div>');
-	// zobrazi jako modalni dialog jquery
-	$( "#ProgressBar" ).dialog({
-		title: title,
-		modal: true,
-		resizable: false,
-		draggable: false,
-		dialogClass: 'ProgressBar',
-		closeOnEscape: false,
-		width: 500
-	});
-	// skryje zaviraci krizek
-	if(hide_close_tick){
-		$( "#ProgressBar" ).dialog( "option", "dialogClass", 'HideCloseTick' );
-	}
-
-	// zobrazi teplomer
-	$( "div#ProgressBar div.Bar" ).progressbar({
-		value: 0
-	});
-
-	// spusti jeho update
-	setTimeout(update_progress(site_identificator), 1000);
-
-	// po vterine updatuje hodnoty teplomeru
-	setTimeout(
-		function(){
-
-		},
-		1000
-	);
-}
-
-function hide_progressbar(){
-	$('#ProgressBar').dialog('destroy');
-}
-
-/**
- * zjistuje aktualni hodnotu progressbaru a nastavuje ji
- */
-function update_progress(file_name) {
-  var progress;
-  progress = $("div#ProgressBar div.Bar")
-    .progressbar("option","value");
-  if (progress < 100) {
-
-      // zpracuje formular
-      $.post(
-        '/check',
-        '?temporary_file_name=' + file_name + '&action=info',
-        function(data) {
-          if (data.errors == null) {
-          }
-          else{
-          }
-        }
-        , "json"
-      );
-
-      $("div#ProgressBar div.Bar")
-        .progressbar("option", "value", progress + 1);
-      setTimeout(update_progress, 1000);
-  }
 }
 
 

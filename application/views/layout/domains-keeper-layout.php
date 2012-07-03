@@ -15,6 +15,10 @@
 	<script type="text/javascript" src="/www/js/jquery/js/jquery-1.6.2.min.js"></script>
 	<script type="text/javascript" src="/www/js/jquery/js/jquery-ui-1.8.16.custom.min.js"></script>
 	<script type="text/javascript">var site_identificator='{site_identificator}';</script>
+	<!-- pomocne objekty -->
+	<script type="text/javascript" src="/www/js/ProgressBar.class.js"></script>
+	<script type="text/javascript" src="/www/js/Navigation.class.js"></script>
+	<!-- spoustec -->
 	<script type="text/javascript" src="/www/js/domain-keeper.js"></script>
 	<style type="text/css"><?=debuger::get_css()?></style>
 </head>

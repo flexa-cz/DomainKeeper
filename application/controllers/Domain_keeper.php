@@ -28,30 +28,30 @@ class Domain_keeper extends MY_Controller {
 			if(!$active){
 					$this_row_class='Inactive';
 					$res[]='info';
-					$report[]='v databázi je označeno jako neaktivní';
+					$report[]='v databĂˇzi je oznaÄŤeno jako neaktivnĂ­';
 			}
 			else{
 				foreach($domain as $key => $value){
 					// kontrola navratoveho stavu
 					if($key=='http_code' && $value && $value!=200){
 						$res[]='error';
-						$report[]='nežádoucí odpověď serveru';
+						$report[]='neĹľĂˇdoucĂ­ odpovÄ›ÄŹ serveru';
 						$detail_domains_list[$index]['http_code']=$this->load->view('blocks/strong-error',array('text'=>$detail_domains_list[$index]['http_code']),true);
 						$detail_domains_list[$index]['response']=$this->load->view('blocks/strong-error',array('text'=>$detail_domains_list[$index]['response']),true);
 					}
 					elseif($key=='http_code' && !$value){
 						$res[]='error';
-						$report[]='server neodpověděl';
+						$report[]='server neodpovÄ›dÄ›l';
 					}
 					// kontrola ip adresy
 					if($key=='ip' && $value && $this->ipControl($value)==2){
 						$res[]='alert';
-						$report[]='stará IP adresa';
+						$report[]='starĂˇ IP adresa';
 						$detail_domains_list[$index]['ip']=$this->load->view('blocks/strong-alert',array('text'=>$detail_domains_list[$index]['ip']),true);
 					}
 					elseif($key=='ip' && $value && $this->ipControl($value)==3){
 						$res[]='error';
-						$report[]='není naše IP adresa';
+						$report[]='nenĂ­ naĹˇe IP adresa';
 						$detail_domains_list[$index]['ip']=$this->load->view('blocks/strong-error',array('text'=>$detail_domains_list[$index]['ip']),true);
 					}
 				}
@@ -87,7 +87,7 @@ class Domain_keeper extends MY_Controller {
 
 		// vypis tabulky s informacemi
 		$info=array(
-				'header'=>array('id','doména','skutečná DNS adresa','testy','IP adresa','HTTP kód','HTTP stav',''),
+				'header'=>array('id','domĂ©na','skuteÄŤnĂˇ DNS adresa','testy','IP adresa','HTTP kĂłd','HTTP stav',''),
 				'rows'=>$detail_domains_list,
 				'class'=>'tablesorter',
 						);
@@ -116,19 +116,19 @@ class Domain_keeper extends MY_Controller {
 			$this->domain_keeper_library->setTemporaryFileName($_POST['temporary_file_name']);// zapne ukladani vystupu do tmp souboru, ktery se jmenuje stejne...
 			$this->domain_keeper_library->checkDomains();
 			$this->domain_keeper_library->logDomains();
-			echo 1;
+			exit('1');
 		}
 		// informace o prubehu
 		elseif(!empty($_POST['temporary_file_name']) && !empty($_POST['action']) && $_POST['action']=='info'){
-			$this->parent->load->library('temporary_file',array('file_name'=>$this->temporary_file_name));
-			echo 'ok';
-			echo $this->parent->temporary_file->getLastRow();
+			$this->load->library('temporary_file',array('file_name'=>$_POST['temporary_file_name']));
+			echo $this->temporary_file->getLastRow();
+			exit();
 		}
 		elseif(!empty($_POST)){
-			print_r($_POST);
+			exit(print_r($_POST,true));
 		}
 		else{
-			echo 0;
+			exit('0');
 		}
 		// test nastavenych akci
 		// spusteni cron souboru
@@ -161,4 +161,3 @@ class Domain_keeper extends MY_Controller {
 	}
 
 }
-?>

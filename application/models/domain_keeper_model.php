@@ -41,7 +41,7 @@ class Domain_keeper_model extends CI_Model {
 	private function setDomainList(){
 				$query="
 			# vytazeni seznamu domen
-			SELECT * FROM `domains`";
+			SELECT * FROM `domains` WHERE active=1";
 		$this->domains_list=$this->db->query($query)->result_array();
 	}
 

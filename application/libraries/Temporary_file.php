@@ -66,7 +66,17 @@ class Temporary_file{
 	 * vraci posledni radek nastaveneho souboru
 	 */
 	public final function getLastRow(){
-		return array_pop(file($this->file_address));
+		$return=false;
+		if(file_exists($this->file_address)){
+			$return=json_encode(array('file_exists'=>1));
+			$file=file($this->file_address);
+			if(!empty($file)){
+				$return=array_pop($file);
+			}
+		}
+		else{
+			$return=json_encode(array('file_exists'=>0));
+		}
+		return $return;
 	}
 }
-?>

@@ -18,7 +18,7 @@
 define('_ROOT', str_replace(array('\\','application/config/constants.php'),array('/',false),__FILE__));
 
 // check if running on localhost
-define('_LOCALHOST', (getenv('little_finger_localhost') ? true : false));
+define('_LOCALHOST', (getenv('propeople_localhost') ? true : false));
 
 // database settings
 if(_LOCALHOST){

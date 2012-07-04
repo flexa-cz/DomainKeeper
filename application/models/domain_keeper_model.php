@@ -10,9 +10,7 @@ class Domain_keeper_model extends CI_Model {
 	/* ************************************************************************ */
 	function __construct(){
 		parent::__construct();
-		$this->setDomainList();
-		$this->setIdLogCycle();
-		$this->setServers();
+		$this->setDomainList()->setIdLogCycle()->setServers();
 	}
 
 	/* ************************************************************************ */
@@ -43,6 +41,7 @@ class Domain_keeper_model extends CI_Model {
 			# vytazeni seznamu domen
 			SELECT * FROM `domains` WHERE active=1";
 		$this->domains_list=$this->db->query($query)->result_array();
+		return $this;
 	}
 
 	private function setDetailDomainList(){
@@ -71,11 +70,13 @@ class Domain_keeper_model extends CI_Model {
 			$detail_list[$detail['id']]['count_of_tests']=$detail['count_of_tests'];
 		}
 		$this->detail_domains_list=$detail_list;
+		return $this;
 	}
 
 	private function setServers(){
 		$query="SELECT `ip`,`active` FROM `servers`";
 		$this->servers=$this->db->query($query)->result_array();
+		return $this;
 	}
 
 	private function setIdLogCycle(){
@@ -83,6 +84,7 @@ class Domain_keeper_model extends CI_Model {
 		$id_log_cycle=$this->db->query($query)->row_array();
 		$id_log_cycle=($id_log_cycle['id'] ? $id_log_cycle['id'] : 0);
 		$this->id_log_cycle=$id_log_cycle;
+		return $this;
 	}
 
 }

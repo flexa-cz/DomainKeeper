@@ -27,7 +27,11 @@ $(document).ready(function() {
 				new ProgressBar(si).Show('obnovení dat').HideCloseTick();
 
 				// data pro post
-				var data='action=check&temporary_file_name=' + si;
+				var data = 'action=check';
+				data += '&temporary_file_name=' + si;
+				data += '&type[domains]=' + post_data['domains'];
+				data += '&type[tests]=' + post_data['tests'];
+				data += '&type[cron]=' + post_data['cron'];
 
 				// spusti obnoveni
 				$.ajax({

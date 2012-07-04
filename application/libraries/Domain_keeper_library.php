@@ -88,6 +88,7 @@ class Domain_keeper_library{
 				$this->parent->temporary_file->write(log_progress($this->temporary_file_name,'check domains', count($this->domains_info), $index));
 			}
 		}
+		return $this;
 	}
 
 	public function getDomainsInfo(){
@@ -111,6 +112,7 @@ class Domain_keeper_library{
 				$this->parent->db->query($query)->result_array();
 			}
 		}
+		return $this;
 	}
 
 	public function setTemporaryFileName($temporary_file_name){

@@ -33,4 +33,6 @@ ehthumbs.db
 Icon?
 Thumbs.db
 
-*/constants.php
+# ignore specialy in project #
+##############################
+application/config/constants.php

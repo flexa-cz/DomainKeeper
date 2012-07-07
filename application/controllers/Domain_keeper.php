@@ -28,30 +28,30 @@ class Domain_keeper extends MY_Controller {
 			if(!$active){
 					$this_row_class='Inactive';
 					$res[]='info';
-					$report[]='v databĂˇzi je oznaÄŤeno jako neaktivnĂ­';
+					$report[]='v databázi je označeno jako neaktivní';
 			}
 			else{
 				foreach($domain as $key => $value){
 					// kontrola navratoveho stavu
 					if($key=='http_code' && $value && $value!=200){
 						$res[]='error';
-						$report[]='neĹľĂˇdoucĂ­ odpovÄ›ÄŹ serveru';
+						$report[]='nežádoucí odpověď serveru';
 						$detail_domains_list[$index]['http_code']=$this->load->view('blocks/strong-error',array('text'=>$detail_domains_list[$index]['http_code']),true);
 						$detail_domains_list[$index]['response']=$this->load->view('blocks/strong-error',array('text'=>$detail_domains_list[$index]['response']),true);
 					}
 					elseif($key=='http_code' && !$value){
 						$res[]='error';
-						$report[]='server neodpovÄ›dÄ›l';
+						$report[]='server neodpověděl';
 					}
 					// kontrola ip adresy
 					if($key=='ip' && $value && $this->ipControl($value)==2){
 						$res[]='alert';
-						$report[]='starĂˇ IP adresa';
+						$report[]='stará IP adresa';
 						$detail_domains_list[$index]['ip']=$this->load->view('blocks/strong-alert',array('text'=>$detail_domains_list[$index]['ip']),true);
 					}
 					elseif($key=='ip' && $value && $this->ipControl($value)==3){
 						$res[]='error';
-						$report[]='nenĂ­ naĹˇe IP adresa';
+						$report[]='není naše IP adresa';
 						$detail_domains_list[$index]['ip']=$this->load->view('blocks/strong-error',array('text'=>$detail_domains_list[$index]['ip']),true);
 					}
 				}
@@ -87,7 +87,7 @@ class Domain_keeper extends MY_Controller {
 
 		// vypis tabulky s informacemi
 		$info=array(
-				'header'=>array('id','domĂ©na','skuteÄŤnĂˇ DNS adresa','testy','IP adresa','HTTP kĂłd','HTTP stav',''),
+				'header'=>array('id','doména','skutečná DNS adresa','testy','IP adresa','HTTP kód','HTTP stav',''),
 				'rows'=>$detail_domains_list,
 				'class'=>'tablesorter',
 						);

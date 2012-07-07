@@ -4,6 +4,7 @@ class Domain_keeper extends MY_Controller {
 	 {
 		 parent::__construct();
 		$this->load->model('domain_keeper_model');
+		$this->lang->load('domain_keeper');
 		$this->load->library('domain_keeper_library',array('parent'=>$this));
 	 }
 
@@ -28,30 +29,30 @@ class Domain_keeper extends MY_Controller {
 			if(!$active){
 					$this_row_class='Inactive';
 					$res[]='info';
-					$report[]='v databázi je označeno jako neaktivní';
+					$report[]=lang('dk_inactive_item');
 			}
 			else{
 				foreach($domain as $key => $value){
 					// kontrola navratoveho stavu
 					if($key=='http_code' && $value && $value!=200){
 						$res[]='error';
-						$report[]='nežádoucí odpověď serveru';
+						$report[]=lang('dk_undesirable_request');
 						$detail_domains_list[$index]['http_code']=$this->load->view('blocks/strong-error',array('text'=>$detail_domains_list[$index]['http_code']),true);
 						$detail_domains_list[$index]['response']=$this->load->view('blocks/strong-error',array('text'=>$detail_domains_list[$index]['response']),true);
 					}
 					elseif($key=='http_code' && !$value){
 						$res[]='error';
-						$report[]='server neodpověděl';
+						$report[]=lang('dk_server_not_response');
 					}
 					// kontrola ip adresy
 					if($key=='ip' && $value && $this->ipControl($value)==2){
 						$res[]='alert';
-						$report[]='stará IP adresa';
+						$report[]=lang('dk_old_ip');
 						$detail_domains_list[$index]['ip']=$this->load->view('blocks/strong-alert',array('text'=>$detail_domains_list[$index]['ip']),true);
 					}
 					elseif($key=='ip' && $value && $this->ipControl($value)==3){
 						$res[]='error';
-						$report[]='není naše IP adresa';
+						$report[]=lang('dk_not_our_ip');
 						$detail_domains_list[$index]['ip']=$this->load->view('blocks/strong-error',array('text'=>$detail_domains_list[$index]['ip']),true);
 					}
 				}
@@ -87,7 +88,7 @@ class Domain_keeper extends MY_Controller {
 
 		// vypis tabulky s informacemi
 		$info=array(
-				'header'=>array('id','doména','skutečná DNS adresa','testy','IP adresa','HTTP kód','HTTP stav',''),
+				'header'=>array(lang('dk_id'),lang('dk_domain'),lang('dk_realy_address'),lang('dk_tests'),lang('dk_ip'),lang('dk_http_response'),lang('dk_http_state'),''),
 				'rows'=>$detail_domains_list,
 				'class'=>'tablesorter',
 						);
